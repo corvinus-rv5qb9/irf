@@ -30,12 +30,50 @@ namespace Week8
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.CreateTimer = new System.Windows.Forms.Timer(this.components);
+            this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
+            // 
+            // CreateTimer
+            // 
+            this.CreateTimer.Enabled = true;
+            this.CreateTimer.Interval = 3000;
+            this.CreateTimer.Tick += new System.EventHandler(this.CreateTimer_Tick);
+            // 
+            // conveyorTimer
+            // 
+            this.conveyorTimer.Enabled = true;
+            this.conveyorTimer.Interval = 10;
+            this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainPanel.Location = new System.Drawing.Point(0, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(830, 516);
+            this.mainPanel.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mainPanel);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer CreateTimer;
+        private System.Windows.Forms.Timer conveyorTimer;
+        private System.Windows.Forms.Panel mainPanel;
     }
 }
 
