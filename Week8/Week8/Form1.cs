@@ -68,7 +68,10 @@ namespace Week8
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory
+            {
+                BallColor = button3.BackColor
+            };
 
         }
         private void DisplayNext()
@@ -90,6 +93,15 @@ namespace Week8
             if (colorPicker.ShowDialog() != DialogResult.OK)
                 return;
             button.BackColor = colorPicker.Color;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory
+            {
+                Color1 = button5.BackColor,
+                Color2 = button6.BackColor
+            };
         }
     }
 }

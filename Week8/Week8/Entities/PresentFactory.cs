@@ -8,13 +8,16 @@ using Week8.Abstractions;
 
 namespace Week8.Entities
 {
-    public class BallFactory: IToyFactory
+    class PresentFactory : IToyFactory
     {
-        public Color BallColor { get; set; }
-
+        public Color Color1 { get; set; }
+        public Color Color2 { get; set; }
         public Toy CreateNew()
         {
-            return new Ball(BallColor);
+            return new Present(Color1, Color2);
         }
     }
 }
+
+
+
