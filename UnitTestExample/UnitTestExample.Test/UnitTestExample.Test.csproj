@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountControllerTestRegisterValidateException.cs" />
     <Compile Include="AccountControllerTestRegisterValidate.cs" />
     <Compile Include="AccountControllerTestRegisterHappy.cs" />
     <Compile Include="AccountControllerPassword.cs" />
