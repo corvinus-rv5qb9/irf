@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountControllerTestRegisterHappy.cs" />
     <Compile Include="AccountControllerPassword.cs" />
     <Compile Include="AccountControllerTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
