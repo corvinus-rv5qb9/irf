@@ -50,7 +50,12 @@ namespace UnitTestExample.Controllers
 
         public bool ValidatePassword(string password)
         {
-            return true;
+            var kletter = new Regex(@"[a-z]+");
+            var nletter = new Regex(@"[A-Z]+");
+            var number = new Regex(@"[0-9]+");
+            var lenght = new Regex(@".{8,}");
+            return kletter.IsMatch(password) && nletter.IsMatch(password) && number.IsMatch(password) && lenght.IsMatch(password);
+
         }
     }
 }
