@@ -21,10 +21,15 @@ namespace MicroSimExample
         public Form1()
         {
             InitializeComponent();
-            Population = GetPopulation(@"C:\Temp\nép.csv");
+
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
-            for (int year = 2005; year <= 2024; year++)
+        }
+
+        private void StartSimulation(int endYear, string csvPath)
+        {
+            Population = GetPopulation(csvPath);
+            for (int year = 2005; year <= endYear; year++)
             {
                 // Végigmegyünk az összes személyen
                 for (int i = 0; i < Population.Count; i++)
@@ -38,10 +43,11 @@ namespace MicroSimExample
                 int nbrOfFemales = (from x in Population
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
-                Console.WriteLine(
-                    string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+                txtMain.Text +=
+                    string.Format("Szimulációs év:{0}\n\tFiúk:{1}\n\tLányok:{2}\n\n", year, nbrOfMales, nbrOfFemales);
             }
         }
+
         private void SimStep(int year, Person person)
         {
             //Ha halott akkor kihagyjuk, ugrunk a ciklus következő lépésére
@@ -110,7 +116,7 @@ namespace MicroSimExample
                     {
                         Age = byte.Parse(line[0]),
                         NbrOfChildren = int.Parse(line[1]),
-                        P=double.Parse(line[2])
+                        P = double.Parse(line[2])
                     });
                 }
             }
@@ -137,5 +143,21 @@ namespace MicroSimExample
 
             return deathProbabilities;
         }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            StartSimulation((int)nmdYear.Value, txtPath.Text);
+
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            var ofd = new OpenFileDialog();
+            ofd.FileName = txtPath.Text;
+            if (ofd.ShowDialog() != DialogResult.OK)
+                return;
+            txtPath.Text = ofd.FileName;
+        }
     }
 }
+
